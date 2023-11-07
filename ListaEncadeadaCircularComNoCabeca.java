@@ -6,8 +6,8 @@ public class ListaEncadeadaCircularComNoCabeca implements Lista{
         private int tamanho;
 
         public ListaEncadeadaCircularComNoCabeca() {
-            cabeca = new No(-1); // NÛ cabeÁa n„o contÈm dados reais
-            cabeca.setProximo(cabeca); // Inicialmente, o nÛ cabeÁa aponta para ele mesmo
+            cabeca = new No(-1); // N√≥ cabe√ßa n√£o cont√©m dados reais
+            cabeca.setProximo(cabeca); // Inicialmente, o n√≥ cabe√ßa aponta para ele mesmo
             tamanho = 0;
         }
 
@@ -20,19 +20,28 @@ public class ListaEncadeadaCircularComNoCabeca implements Lista{
 
         public void adicionarFinal(int valor) {
             No novoNo = new No(valor);
-            novoNo.setProximo(cabeca.getProximo());
-            cabeca.setProximo(novoNo);
-            cabeca = novoNo; // Atualiza o nÛ cabeÁa para o novo nÛ (˙ltimo elemento)
+            if(cabeca == null) {
+            	cabeca = novoNo;
+            	cabeca.setProximo(cabeca);
+            }else {
+            	No ultimoNo = cabeca;
+            	while(ultimoNo.getProximo() != cabeca) {
+            		ultimoNo = ultimoNo.getProximo();
+            	}
+            	ultimoNo.setProximo(novoNo);
+            	novoNo.setProximo(cabeca);
+            }
+            // Atualiza o n√≥ cabe√ßa para o novo n√≥ (√∫ltimo elemento)
             tamanho++;
         }
 
         public void adicionarNoIndice(int elemento, int indice) {
             if (isCheia()) {
-                throw new RuntimeException("A lista est· cheia.");
+                throw new RuntimeException("A lista est√° cheia.");
             }
 
             if (indice < 0 || indice > tamanho) {
-                throw new RuntimeException("Õndice inv·lido.");
+                throw new RuntimeException("√çndice inv√°lido.");
             }
 
             if (indice == 0) {
@@ -53,7 +62,7 @@ public class ListaEncadeadaCircularComNoCabeca implements Lista{
 
         public int removerInicio() {
             if (isVazia()) {
-                throw new RuntimeException("A lista est· vazia.");
+                throw new RuntimeException("A lista est√° vazia.");
             }
 
             No primeiro = cabeca.getProximo();
@@ -64,7 +73,7 @@ public class ListaEncadeadaCircularComNoCabeca implements Lista{
 
         public int removerFinal() {
             if (isVazia()) {
-                throw new RuntimeException("A lista est· vazia.");
+                throw new RuntimeException("A lista est√° vazia.");
             }
 
             No atual = cabeca.getProximo();
@@ -76,14 +85,14 @@ public class ListaEncadeadaCircularComNoCabeca implements Lista{
             }
 
             anterior.setProximo(cabeca);
-            cabeca = anterior; // Atualiza o nÛ cabeÁa para o novo ˙ltimo elemento
+            cabeca = anterior; // Atualiza o n√≥ cabe√ßa para o novo √∫ltimo elemento
             tamanho--;
             return atual.getDado();
         }
 
         public int removerElemento(int elemento) {
             if (isVazia()) {
-                throw new RuntimeException("A lista est· vazia.");
+                throw new RuntimeException("A lista est√° vazia.");
             }
 
             if (cabeca.getProximo().getDado() == elemento) {
@@ -104,7 +113,7 @@ public class ListaEncadeadaCircularComNoCabeca implements Lista{
                 atual = atual.getProximo();
             }
 
-            throw new RuntimeException("Elemento n„o encontrado na lista.");
+            throw new RuntimeException("Elemento n√£o encontrado na lista.");
         }
 
         public int tamanho() {
@@ -121,7 +130,7 @@ public class ListaEncadeadaCircularComNoCabeca implements Lista{
 
         public void print() {
             if (isVazia()) {
-                System.out.println("A lista encadeada circular est· vazia.");
+                System.out.println("A lista encadeada circular est√° vazia.");
                 return;
             }
 
