@@ -1,0 +1,17 @@
+package pilha;
+
+public interface Pilha {
+
+	public void push(int e) throws PilhaCheiaException;
+	
+	public int pop() throws PilhaVaziaException;
+
+	public int topo() throws PilhaVaziaException;
+	
+	public boolean isCheia();
+	
+	public boolean isVazia();
+	
+	public int quantidade();
+
+}
