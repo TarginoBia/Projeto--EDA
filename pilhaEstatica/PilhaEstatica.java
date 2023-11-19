@@ -11,21 +11,21 @@ public class PilhaEstatica implements Pilha{
 
 	public void push(int e) throws PilhaCheiaException {
 		if (isCheia()) {
-            throw new PilhaCheiaException("A pilha est· cheia. N„o È possÌvel inserir mais elementos.");
+            throw new PilhaCheiaException("A pilha est√° cheia. N√£o √© poss√≠vel inserir mais elementos.");
         }
         array[++topo] = e;
 	}
 
 	public int pop() throws PilhaVaziaException {
 		if (isVazia()) {
-            throw new PilhaVaziaException("A pilha est· vazia. N„o È possÌvel remover elementos.");
+            throw new PilhaVaziaException("A pilha est√° vazia. N√£o √© poss√≠vel remover elementos.");
         }
         return array[topo--];
 	}
 
 	public int topo() throws PilhaVaziaException {
 		if (isVazia()) {
-            throw new PilhaVaziaException("A pilha est· vazia. N„o h· topo para retornar.");
+            throw new PilhaVaziaException("A pilha est√° vazia. N√£o h√° topo para retornar.");
         }
         return array[topo];
 	}
@@ -43,8 +43,8 @@ public class PilhaEstatica implements Pilha{
 	}
 
 	public void imprimir() {
-		System.out.println("Conte˙do da pilha:");
-        for (int i = 0; i <= topo; i++) {
+		System.out.println("Conte√∫do da pilha:");
+        for (int i = topo; i >= 0; i--) {
             System.out.print(array[i] + " ");
         }
         System.out.println();
