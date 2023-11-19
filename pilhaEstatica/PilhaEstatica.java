@@ -47,6 +47,5 @@ public class PilhaEstatica implements Pilha{
         for (int i = topo; i >= 0; i--) {
             System.out.print(array[i] + " ");
         }
-        System.out.println();
 	}
 }
