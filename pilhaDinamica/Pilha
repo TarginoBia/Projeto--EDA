@@ -4,7 +4,7 @@ import pilha.PilhaCheiaException;
 import pilha.PilhaVaziaException;
 
 public interface Pilha {
-	public void push(int e) throws PilhaCheiaException;
+	public void push(int e);
 	
 	public int pop() throws PilhaVaziaException;
 
