@@ -1,0 +1,19 @@
+package filaDinamica;
+
+import filaDinamica.FilaCheiaException;
+import filaDinamica.FilaVaziaException;
+
+public interface Fila {
+
+    public void enfileirar(int e) throws FilaCheiaException;
+
+    public int desenfileirar() throws FilaVaziaException;
+
+    public int quantidade();
+
+    public boolean isCheia();
+
+    public boolean isVazia();
+
+    public void imprimir();
+}
